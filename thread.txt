@@ -1,0 +1,51 @@
+ public class Main {
+
+    static void clearScreen() {
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+    }
+
+    static void butterfly(int n) throws InterruptedException {
+
+        // Upper half
+        for (int i = 1; i <= n; i++) {
+
+            for (int j = 1; j <= i; j++)
+                System.out.print("* ");
+
+            for (int j = 1; j <= 2 * (n - i); j++)
+                System.out.print("  ");
+
+            for (int j = 1; j <= i; j++)
+                System.out.print("* ");
+
+            System.out.println();
+            Thread.sleep(200);
+        }
+
+        // Lower half
+        for (int i = n - 1; i >= 1; i--) {
+
+            for (int j = 1; j <= i; j++)
+                System.out.print("* ");
+
+            for (int j = 1; j <= 2 * (n - i); j++)
+                System.out.print("  ");
+
+            for (int j = 1; j <= i; j++)
+                System.out.print("* ");
+
+            System.out.println();
+            Thread.sleep(200);
+        }
+    }
+
+    public static void main(String[] args) throws Exception {
+
+        while (true) {
+            clearScreen();
+            butterfly(5);
+            Thread.sleep(1000); // Wait before repeating
+        }
+    }
+}
